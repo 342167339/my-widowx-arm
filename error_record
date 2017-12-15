@@ -1,0 +1,5 @@
+1.问题：电机不会动，或者arbotix_terminal检测不到电机 
+	解决：1）数据线松了 2）重刷ros固件
+2.问题：arbotix_terminal提示init没有/dev/arbotix
+	解决：打开问题文件，将/dev/arbotix改为/dev/ttyUSB0
+3.问题：
