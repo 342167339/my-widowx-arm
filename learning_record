@@ -8,3 +8,7 @@
 
 2017.12.17 移动机械臂到目标点老是出错，可能是没有设置orientation
 	设置cartesian限制会提示get_current_pose错误，time is not initialized. Have you called init_node()? 可能是需要启动节点
+
+2017.12.18 使用c++控制机械臂
+	将move_group_interface_tutorial.cpp的内容移植到widowx_arm上，问题不少
+	总是提示/usr/bin/ld: warning: libmoveit_occupancy_map_monitor.so.0.9.10, needed by /opt/ros/kinetic/lib/libmoveit_planning_scene_monitor.so, not found (try using -rpath or -rpath-link)等等，可能是有包没装，尝试把moveit的包都装了

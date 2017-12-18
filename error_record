@@ -2,4 +2,5 @@
 	解决：1）数据线松了 2）重刷ros固件
 2.问题：arbotix_terminal提示init没有/dev/arbotix
 	解决：打开问题文件，将/dev/arbotix改为/dev/ttyUSB0
-3.问题：
+3.问题：/usr/bin/ld: warning: libmoveit_occupancy_map_monitor.so.0.9.10, needed by /opt/ros/kinetic/lib/libmoveit_planning_scene_monitor.so, not found (try using -rpath or -rpath-link)
+	解决：apt-get对应的包
