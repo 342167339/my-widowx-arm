@@ -12,3 +12,12 @@
 2017.12.18 使用c++控制机械臂
 	将move_group_interface_tutorial.cpp的内容移植到widowx_arm上，问题不少
 	总是提示/usr/bin/ld: warning: libmoveit_occupancy_map_monitor.so.0.9.10, needed by /opt/ros/kinetic/lib/libmoveit_planning_scene_monitor.so, not found (try using -rpath or -rpath-link)等等，可能是有包没装，尝试把moveit的包都装了
+
+2017.12.21 move_group_interface的学习
+	1)使用关节joint规划可以
+	2)使用goal规划时用pose消息函数容易失败，用x，y，z坐标可以
+	3)使用路径约束，但老是失败，没搞懂
+	4)使用笛卡尔路径，也失败，提示Visualizing plan 4 (cartesian path) (1.37% acheived)
+	5)添加障碍物然后避障可以实现，但轨迹怪怪的，有点夸张
+	6)遇到一个问题，在真实控制机械臂时会出现gripper_link TF转换错误：The complete state of the robot is not yet known.  Missing gripper_joint. 没解决，暂时的思路是仿真的时候没这个错误，错误出现在启动arbotix模拟器然后运行arm_controller和gripper_controller的时候，可能是arbotix参数加载错了，重新下了包编译问题也还是存在
+	7）机械臂在default_pose的时候不能到达目标位置，有点下垂，可能是物理问题
