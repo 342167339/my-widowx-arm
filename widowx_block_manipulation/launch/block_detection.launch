@@ -1,0 +1,8 @@
+<launch>
+
+	<!-- Launch block manipulation demo -->
+	<node name="block_detection_action_server" pkg="widowx_block_manipulation" type="block_detection_action_server" output="screen">
+		<rosparam param="table_pose">[0.0, 0.0, -0.01]</rosparam> <!--from arm position-->
+	</node>
+
+</launch>

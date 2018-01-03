@@ -2,7 +2,6 @@
 <launch>
   <arg name="simulation" default="false"/>
   <arg name="sr300" default="false"/>
-  <arg name="kinect" default="false"/>
 
   <param unless="$(arg sr300)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find widowx_arm_description)/robots/widowx_arm.urdf.xacro'"/>
   <param if="$(arg sr300)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find widowx_arm_description)/robots/widowx_arm_sr300.urdf.xacro'"/>

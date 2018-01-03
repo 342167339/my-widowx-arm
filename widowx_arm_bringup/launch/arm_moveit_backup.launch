@@ -12,9 +12,6 @@
 
   <!-- By default, we are not using a SR300 depth sensor -->
   <arg name="sr300" default="false"/>
-
-  <!-- By default, we are not using a kinect depth sensor -->
-  <arg name="kinect" default="false"/>
   
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find widowx_arm_moveit_config)/launch/planning_context.launch">
@@ -26,7 +23,6 @@
   <!-- Start arm controller if we are not in simulation mode -->
   <include unless="$(arg sim)" file="$(find widowx_arm_bringup)/launch/arm.launch">
     <arg name="sr300" value="$(arg sr300)"/>
-    <arg name="kinect" value="$(arg kinect)"/>
   </include>
 
   <!-- Publish fake joint states if we do not have a robot connected -->

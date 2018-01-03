@@ -155,7 +155,7 @@ link_directories(${catkin_LIBRARY_DIRS})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(move_group_goal src/move_group_goal.cpp)
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -168,12 +168,14 @@ add_executable(move_group_goal src/move_group_goal.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
+
+add_executable(move_group_goal src/move_group_goal.cpp)
 target_link_libraries(move_group_goal
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
-
 install(TARGETS move_group_goal DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
 #############
 ## Install ##
 #############

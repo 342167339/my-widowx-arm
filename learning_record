@@ -1,4 +1,12 @@
-2017.12.17 使用北通手柄控制widowx_arm，在~/widowx_arm/src/visualization/src/moveit_ros_visualization中的moveitjoy_module.py中添加北通手柄的模型
+2017.12 1.问题：电机不会动，或者arbotix_terminal检测不到电机
+        解决：1）数据线松了 2）重刷ros固件
+	2.问题：arbotix_terminal提示init没有/dev/arbotix
+        解决：打开问题文件，将/dev/arbotix改为/dev/ttyUSB0
+	3.问题：/usr/bin/ld: warning: libmoveit_occupancy_map_monitor.so.0.9.10, needed by /opt/ros/kinetic/lib/libmoveit_planning_scene_monitor.so, not found (try using -rpath or -rpath-link)
+        解决：apt-get对应的包
+
+
+2017.12.16 使用北通手柄控制widowx_arm，在~/widowx_arm/src/visualization/src/moveit_ros_visualization中的moveitjoy_module.py中添加北通手柄的模型
 	因为通常moveit_config包里只支持xbox，ps3两种手柄，直接运行joystick_control.launch会提示未知手柄。
 	moveitjoy_module.py中会有各种手柄相对应的类，区分是哪个手柄看的是axes数和button数，在jstest_gtk中可以查看
 	添加一个BTStatus对应北通手柄，6axes和12button，不同轴键对应不同功能，主要是上下左右前后运动
@@ -6,12 +14,14 @@
 	启动rviz后运行joystick_control.launch会造成rviz极其卡，不知原因
 	如果不用rviz显示，则无法控制，因为没有点rviz里控制窗口中的allow exteral command按钮，但是可以执行控制脚本。
 
+
 2017.12.17 移动机械臂到目标点老是出错，可能是没有设置orientation
 	设置cartesian限制会提示get_current_pose错误，time is not initialized. Have you called init_node()? 可能是需要启动节点
 
 2017.12.18 使用c++控制机械臂
 	将move_group_interface_tutorial.cpp的内容移植到widowx_arm上，问题不少
 	总是提示/usr/bin/ld: warning: libmoveit_occupancy_map_monitor.so.0.9.10, needed by /opt/ros/kinetic/lib/libmoveit_planning_scene_monitor.so, not found (try using -rpath or -rpath-link)等等，可能是有包没装，尝试把moveit的包都装了
+
 
 2017.12.21 move_group_interface的学习
 	1)使用关节joint规划可以
@@ -21,3 +31,12 @@
 	5)添加障碍物然后避障可以实现，但轨迹怪怪的，有点夸张
 	6)遇到一个问题，在真实控制机械臂时会出现gripper_link TF转换错误：The complete state of the robot is not yet known.  Missing gripper_joint. 没解决，暂时的思路是仿真的时候没这个错误，错误出现在启动arbotix模拟器然后运行arm_controller和gripper_controller的时候，可能是arbotix参数加载错了，重新下了包编译问题也还是存在
 	7）机械臂在default_pose的时候不能到达目标位置，有点下垂，可能是物理问题
+
+
+2018.1.2  block_detection包的阅读
+
+
+2018.1.3  摄像头的使用
+	1）调试了kinect和sr300,打开后有个共同问题，找不到标定文件在~/.ros/
+	2）因为没有标定文件，所以camera_depth_registered_image看不了，只能看camera_depth_image_raw，camera_depth_points话题在rqt里看不了，所以没有显示，但话题有发布，在block_detection.cpp中修改订阅的话题camera_depth_registered_points
+	3）要用kinect取代sr300,一个是修改启动文件，还有修改xacro文件，将kinect模型和widowx模型整合到一起，重点是tf变换

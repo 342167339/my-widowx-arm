@@ -47,7 +47,6 @@
 #include <pcl/sample_consensus/method_types.h>
 #include <pcl/sample_consensus/model_types.h>
 #include <pcl/segmentation/sac_segmentation.h>
-#include <pcl/segmentation/extract_clusters.h>
 
 #include <pcl_ros/point_cloud.h>
 #include <pcl_ros/transforms.h>
@@ -116,6 +115,7 @@ public:
     
     // Subscribe to point cloud
     sub_ = nh_.subscribe("/camera/depth_registered/points", 1, &BlockDetectionServer::cloudCb, this);
+    // sub_ = nh_.subscribe("/camera/depth/points", 1, &BlockDetectionServer::cloudCb, this);
 
     // Publish the filtered point cloud for debug purposes
     pub_ = nh_.advertise< pcl::PointCloud<pcl::PointXYZRGB> >("block_output", 1);

@@ -248,6 +248,13 @@ private:
       //tf::Quaternion q = tf::createQuaternionFromRPY(0.0,
       //                                               attempts*fRand(-0.05, +0.05) + rp,
       //                                               attempts*fRand(-0.05, +0.05) + ry);
+      
+      /** \brief construct a Quaternion from Fixed angles
+      * \param roll The roll about the X axis
+      * \param pitch The pitch about the Y axis
+      * \param yaw The yaw about the Z axis
+      * \return The quaternion constructed
+      */
       tf::Quaternion q = tf::createQuaternionFromRPY(3.14,
                                                      attempts*fRand(-0.05, +0.05) /* + rp*/,
                                                      -3.14+attempts*fRand(-0.05, +0.05) + ry);
